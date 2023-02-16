@@ -34,6 +34,12 @@ export class CartComponent {
   onChange() {
     this.total = 0;
     for (var p of this.procarts) {
+      if (p.amount == 0) {
+        alert('Removed from cart!');
+        this.procarts = this.procarts.filter((element) => {
+            return element.amount != 0;
+        });
+      }
       this.total += p.price * p.amount;
     }
     this.total = parseFloat(this.total.toFixed(2));

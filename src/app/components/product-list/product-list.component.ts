@@ -19,4 +19,8 @@ export class ProductListComponent {
     });
   }
 
+  onAdd(): void {
+    alert('Added to cart!');
+  }
+
 }

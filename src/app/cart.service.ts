@@ -15,6 +15,12 @@ export class CartService {
   }
 
   addToProcarts(product: Product): void {
+    for (var p of this.procarts) {
+      if (p.name == product.name) {
+        p.amount += product.amount
+        return
+      }
+    }
     this.procarts.push(product);
   }
 
