@@ -1,0 +1,36 @@
+<div class="cart-container" *ngIf="procarts.length != 0; else empty">
+    <ul>
+        <li *ngFor="let procart of procarts" class="cart-item">
+            <img src="{{ procart.url }}" alt="" *ngIf="procart.amount != 0">
+            <div class="cart-item-details" *ngIf="procart.amount != 0">
+                <p>{{ procart.name }}</p>
+                <p>{{ procart.price }}</p>
+                <label for="amount">Amount: </label>
+                <input type="number" name="amount" min="0" class="number-input" [defaultValue]="1" [(ngModel)]="procart.amount" (ngModelChange)="onChange()">
+            </div>
+        </li>
+        <p>Total: ${{ total }}</p>
+    </ul>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="form-margin cart-panel">
+        <br>
+        <label for="name">Full name</label>
+        <br>
+        <input type="text" name="name" id="name" required minlength="3" placeholder="(minimum 3 characters)" [(ngModel)]="name">
+        <br><br>
+        <label for="address">Address</label>
+        <br>
+        <input type="text" name="address" id="address" required minlength="6" placeholder="(minimum 6 characters)" [(ngModel)]="address">
+        <br><br>
+        <label for="card">Credit card number</label>
+        <br>
+        <input type="text" name="card" id="card" required minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="card">
+        <br>
+        <p style="opacity: 0.5;">We'll never share your payment details with anyone else.</p>
+        <button type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+</div>
+<ng-template #empty>
+    <p class="empty-cart-message">Your cart is empty!</p>
+    <a routerLink="/">Go to product list</a>
+</ng-template>
