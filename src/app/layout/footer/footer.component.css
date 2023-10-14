@@ -1,0 +1,19 @@
+footer {
+    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 12px;
+    margin-top: 5%;
+}
+  
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px;
+}
